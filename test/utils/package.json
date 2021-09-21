@@ -1,0 +1,13 @@
+{
+  "name": "@nc/test-utils",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Utils for testing",
+  "devDependencies": {
+    "@nc/utils": "0.0.0",
+    "@types/jest": "^26.0.0",
+    "config": "^3.3.0",
+    "jest": "^27.0.0",
+    "ts-jest": "^27.0.0"
+  }
+}

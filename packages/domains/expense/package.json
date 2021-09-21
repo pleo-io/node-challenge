@@ -1,0 +1,7 @@
+{
+    "name": "@nc/domain-expense",
+    "version": "0.0.0",
+    "description": "Expenses domain logic",
+    "private": true,
+    "dependencies": {}
+  }

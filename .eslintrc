@@ -1,0 +1,158 @@
+{
+    "extends": "airbnb-base",
+    "ignorePatterns": [
+      "node_modules/"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "import",
+      "@typescript-eslint"
+    ],
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "paths": [
+            "middleware",
+            "packages",
+            "test"
+          ],
+          "extensions": [
+            ".js",
+            ".json",
+            ".ts"
+          ]
+        }
+      }
+    },
+    "rules": {
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": [
+            "**/test/**/*.ts"
+          ]
+        }
+      ],
+      "no-async-promise-executor": "error",
+      "no-return-await": "error",
+      "require-await": "error",
+      "yoda": "off",
+      "no-restricted-properties": "off",
+      "no-cond-assign": "off",
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "vars": "all",
+          "args": "after-used",
+          "ignoreRestSiblings": false
+        }
+      ],
+      "@typescript-eslint/type-annotation-spacing": "error",
+      "no-await-in-loop": "error",
+      "no-useless-computed-key": "off",
+      "import/no-unresolved": "error",
+      "no-bitwise": "off",
+      "strict": "off",
+      "no-continue": "off",
+      "arrow-body-style": "off",
+      "camelcase": "off",
+      "class-methods-use-this": "off",
+      "operator-linebreak": "off",
+      "lines-between-class-members": "off",
+      "comma-dangle": [
+        "error",
+        {
+          "arrays": "always-multiline",
+          "objects": "always-multiline",
+          "imports": "always-multiline",
+          "exports": "always-multiline",
+          "functions": "never"
+        }
+      ],
+      "no-multi-assign": "off",
+      "default-case": "off",
+      "consistent-return": "off",
+      "func-names": "off",
+      "import/order": "off",
+      "import/extensions": "off",
+      "import/first": "off",
+      "import/newline-after-import": "off",
+      "import/no-named-as-default": "off",
+      "import/no-named-as-default-member": "off",
+      "import/prefer-default-export": "off",
+      "max-len": "off",
+      "no-console": "error",
+      "no-mixed-operators": "off",
+      "no-param-reassign": "off",
+      "no-plusplus": [
+        "error",
+        {
+          "allowForLoopAfterthoughts": true
+        }
+      ],
+      "no-prototype-builtins": "off",
+      "no-restricted-syntax": "off",
+      "no-underscore-dangle": "off",
+      "no-useless-escape": "off",
+      "no-use-before-define": [
+        "error",
+        {
+          "functions": false,
+          "classes": true,
+          "variables": true
+        }
+      ],
+      "no-var": "off",
+      "object-property-newline": "off",
+      "operator-assignment": "off",
+      "prefer-arrow-callback": "off",
+      "prefer-rest-params": "off",
+      "prefer-spread": "off",
+      "prefer-template": "off",
+      "object-curly-newline": "off",
+      "prefer-destructuring": "off",
+      "no-restricted-globals": "off",
+      "radix": "off",
+      "space-before-function-paren": [
+        "error",
+        {
+          "anonymous": "never",
+          "named": "never"
+        }
+      ],
+      "sort-imports": [
+        "error",
+        {
+          "ignoreCase": true,
+          "ignoreDeclarationSort": false,
+          "ignoreMemberSort": false,
+          "memberSyntaxSortOrder": [
+            "none",
+            "all",
+            "single",
+            "multiple"
+          ]
+        }
+      ],
+      "linebreak-style": "off",
+      "no-lonely-if": "off",
+      "@typescript-eslint/member-delimiter-style": [
+        "warn",
+        {
+          "multiline": {
+            "delimiter": "none",
+            "requireLast": false
+          },
+          "singleline": {
+            "delimiter": "comma",
+            "requireLast": false
+          }
+        }
+      ]
+    },
+    "env": {
+      "browser": true,
+      "jest": true
+    }
+  }
