@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: expenses; Type: TABLE; Schema: public; Owner: postgresql_202109212025xhf8a3z1ktuja3wd
+-- Name: expenses; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.expenses (
@@ -35,10 +35,10 @@ CREATE TABLE public.expenses (
 );
 
 
-ALTER TABLE public.expenses OWNER TO postgresql_202109212025xhf8a3z1ktuja3wd;
+-- ALTER TABLE public.expenses OWNER TO postgres;
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: postgresql_202109212025xhf8a3z1ktuja3wd
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.users (
@@ -50,10 +50,10 @@ CREATE TABLE public.users (
 );
 
 
-ALTER TABLE public.users OWNER TO postgresql_202109212025xhf8a3z1ktuja3wd;
+-- ALTER TABLE public.users OWNER TO postgres;
 
 --
--- Data for Name: expenses; Type: TABLE DATA; Schema: public; Owner: postgresql_202109212025xhf8a3z1ktuja3wd
+-- Data for Name: expenses; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.expenses (id, merchant_name, amount_in_cents, currency, user_id, date_created, status) FROM stdin;
@@ -67,7 +67,7 @@ f3f34c29-274a-414d-988f-711802eeac25	BRUS	5000	DKK	3d16547a-79f6-4f62-9034-d3bfb
 
 
 --
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgresql_202109212025xhf8a3z1ktuja3wd
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.users (id, first_name, last_name, company_name, ssn) FROM stdin;

@@ -1,15 +1,15 @@
 import config from 'config';
-import postgres from 'postgres';
+import { Client } from 'pg';
 
 let db;
 
 export function connect() {
-  db = postgres(config.db);
-  return db;
+  db = new Client(config.db);
+  return db.connect();
 }
 
-export function query(queryString: string) {
-  if (!db) connect();
+export async function query(queryString: string, parameters?: any) {
+  if (!db) await connect();
 
-  return db`${queryString}`;
+  return db.query(queryString, parameters);
 }
