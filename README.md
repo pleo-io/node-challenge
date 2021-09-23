@@ -27,7 +27,7 @@ yarn
 You will also need to [install Postgres](https://www.postgresqltutorial.com/install-postgresql-macos/), create a `challenge` database and load the sql file `dump.sql`:
 
 ```bash
-sudo -u postgres -i psql challenge < dump.sql
+psql challenge < dump.sql
 ```
 
 ## Start
