@@ -1,4 +1,5 @@
 declare namespace jest {
+  // eslint-disable-next-line
   interface Matchers<R> {
     toThrowUnauthorized: (expected: string) => jest.CustomMatcherResult
     toThrowBadRequest: (expected: string) => jest.CustomMatcherResult

@@ -6,7 +6,7 @@ const shutdownRoutine = {
   ...config.shutdown,
 };
 
-function shutdown(server, onShutdown?: (server) => any) {
+function shutdown(server, onShutdown?: (_) => any) {
   if (!shutdownRoutine.active) {
     shutdownRoutine.active = true;
     server.ready = false;
@@ -15,14 +15,14 @@ function shutdown(server, onShutdown?: (server) => any) {
   }
 }
 
-function shutdownRequest(signal: string, server, onShutdown?: (server) => any) {
+function shutdownRequest(signal: string, server, onShutdown?: (_) => any) {
   return () => {
     process.stderr.write(signal);
     shutdown(server, onShutdown);
   };
 }
 
-export default function gracefulShutdown(server, onShutdown?: (server) => any) {
+export default function gracefulShutdown(server, onShutdown?: (_) => any) {
   // Modern http compatibility layer
   server.close = server.close || server.stop;
 
