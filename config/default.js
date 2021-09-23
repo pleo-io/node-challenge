@@ -2,10 +2,6 @@ require('dotenv').config();
 const path = require('path');
 
 module.exports = {
-  auth: {
-    jwtSecret: process.env.JWT_SECRET,
-    expiresAt: 60 * 60 * 24,
-  },
   db: {
     host: '0.0.0.0',
     port: 5432,
