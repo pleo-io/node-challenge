@@ -8,7 +8,7 @@ This challenge has been designed to measure your knowledge of Node.js, Express, 
 
 Your objective is to write this new route to fetch the list of expenses for a given user. Right now that domain is empty, so you'll have to build everything from scratch- but you can look over at the user domain for inspiration. Please make sure that the endpoint scales adequately and supports paging, sorting and filtering. Additionally, we would also like you to write some tests for your route.
 
-Finally, as a bonus objective, try to improve any aspect of this API. It could be to add more TS types, tests, add features, graphql support, etc. 
+Finally, as a bonus objective, try to improve any aspect of this API. It could be to add more TS types, better security, tests, add features, graphql support, etc. 
 
 ## Instructions
 
