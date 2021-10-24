@@ -56,3 +56,11 @@ The command above will run the following test suites sequentially:
 
 
 Happy hacking 😁!
+
+
+# My though Process Towars Solving this challenge
+
+# Installation and Configuration
+
+First Of all i installed the packages and configured my database connections , secondly import the sql dump file into the database.
+
