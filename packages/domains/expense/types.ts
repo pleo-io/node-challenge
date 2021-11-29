@@ -5,6 +5,7 @@ export interface IExpense {
     currency: string
     user_id: string
     date_created: string
+    status: string
 }
 
 export interface IUserExpenses {

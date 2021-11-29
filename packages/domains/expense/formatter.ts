@@ -1,6 +1,6 @@
 import { IExpense } from './types';
 
-const publicFields = ['merchant_name', 'amount_in_cents', 'currency', 'user_id', 'date_created'];
+const publicFields = ['merchant_name', 'amount_in_cents', 'currency', 'user_id', 'date_created', 'status'];
 
 export function capitalize(word) {
   const str = `${word}`;
@@ -19,5 +19,6 @@ export function format(rawExpense: any): IExpense {
     currency: rawExpense.currency,
     user_id: rawExpense.user_id,
     date_created: rawExpense.date_created,
+    status: rawExpense.status,
   };
 }
