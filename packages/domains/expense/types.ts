@@ -11,3 +11,18 @@ export interface IExpense {
 export interface IUserExpenses {
     expenses: IExpense[]
 }
+
+export interface Ipagination {
+    pageInfo: {
+        total: number
+        currentPage: number
+        totalPages: number
+    }
+    queryName: IExpense[]
+}
+
+export interface IQuery {
+    userId?: string
+    limit?: number
+    page?: number
+}

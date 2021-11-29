@@ -1,23 +1,26 @@
 import { ApiError } from '@nc/utils/errors';
 import { getUserExpenses } from '../model';
-import { Router } from 'express';
+import { IQuery } from '../types';
 import { secureTrim } from '../formatter';
 import { to } from '@nc/utils/async';
+import { NextFunction, Request, Response, Router } from 'express';
 
 export const router = Router();
 
-router.get('/get-user-expenses', async (req, res, next) => {
-  const [errorResponse, userExpenses] = await to(getUserExpenses(req.query?.userId));
+router.get('/get-user-expenses', async (req: Request<{}, {}, {}, IQuery>, res: Response, next: NextFunction) => {
+  const { userId, limit, page } = req.query;
+  const [errorResponse, userExpenses] = await to(getUserExpenses({ userId, limit: limit || 10, page }));
 
   if (errorResponse) {
-    return next(new ApiError(errorResponse, errorResponse.status, `Could not get user details: ${errorResponse}`, errorResponse.title, req));
+    return next(new ApiError(errorResponse, errorResponse.status, `Could not get user expenses: ${errorResponse}`, errorResponse.title, req));
   }
 
   if (!userExpenses) {
     return res.json({});
   }
 
-  const responseJson = JSON.parse(secureTrim(userExpenses.expenses));
+  // TODO validate response objects fields
+  userExpenses['User Expenses'] = JSON.parse(secureTrim(userExpenses['User Expenses']));
 
-  return res.json(responseJson);
+  return res.json(userExpenses);
 });
