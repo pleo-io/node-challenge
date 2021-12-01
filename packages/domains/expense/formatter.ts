@@ -1,13 +1,9 @@
-import { IExpense } from './types';
+import capitalize from '@nc/utils/capitalize';
+import { IExpense, IObject } from './types';
 
-const publicFields = ['merchant_name', 'amount_in_cents', 'currency', 'user_id', 'date_created', 'status'];
+const publicFields = ['merchant_name', 'amount_in_cents', 'currency', 'date_created', 'status'];
 
-export function capitalize(word) {
-  const str = `${word}`;
-  return str[0].toUpperCase() + str.slice(1);
-}
-
-export function secureTrim(expense: IExpense[]): string {
+export function secureTrim(expense: IExpense[] | IObject): string {
   return JSON.stringify(expense, publicFields);
 }
 

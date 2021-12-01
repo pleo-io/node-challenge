@@ -1,5 +1,5 @@
 import { format } from './formatter';
-import { pagination } from '@nc/utils/pagination';
+import pagination from '@nc/utils/pagination';
 import { to } from '@nc/utils/async';
 import { BadRequest, InternalError, NotFound } from '@nc/utils/errors';
 import { countUserExpenses, readUserExpenses } from './data/db-expense';

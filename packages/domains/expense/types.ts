@@ -1,7 +1,7 @@
 export interface IExpense {
     id: string
     merchant_name: string
-    amount_in_cents: string
+    amount_in_cents: number
     currency: string
     user_id: string
     date_created: string
@@ -10,6 +10,10 @@ export interface IExpense {
 
 export interface IUserExpenses {
     expenses: IExpense[]
+}
+
+export interface IObject {
+    [propname: string]: string | number
 }
 
 export interface Ipagination {
