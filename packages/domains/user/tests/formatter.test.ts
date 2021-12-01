@@ -3,10 +3,11 @@ import { format, secureTrim } from '../formatter';
 describe('[Packages | User-domain | Formatter] secureTrim', () => {
   test('secureTrim should remove fields that are not defined in the list of public fields', () => {
     return expect(secureTrim({
+      id: '1234',
       first_name: 'John',
       last_name: 'Smith',
       company_name: 'Pleo',
-      ssn: 1,
+      ssn: '1',
     })).toEqual(JSON.stringify({
       first_name: 'John',
       last_name: 'Smith',
