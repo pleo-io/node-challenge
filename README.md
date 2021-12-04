@@ -56,3 +56,11 @@ The command above will run the following test suites sequentially:
 
 
 Happy hacking 😁!
+
+I worked intermittently for about 7 hours due to my tight schedule and I really had fun working on it
+## Work Flow
+1. I ran the existing tests and made some fixes on the failing tests
+2. Implemented the basic functionality to fetch user expenses using the same code file and code structure in the user domain sample provided
+3. Implemented a reusable pagination function to paginate the response
+4. wrote unit and integration tests
+
