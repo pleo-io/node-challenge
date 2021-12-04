@@ -10,9 +10,9 @@ describe('[Packages | Expense-domain] getUserExpenses', () => {
     expect(result?.pageInfo).toHaveProperty('total');
     expect(result?.pageInfo).toHaveProperty('currentPage');
     expect(result?.pageInfo).toHaveProperty('totalPages');
-    expect(result).toHaveProperty('User Expenses');
-    expect(Array.isArray(result['User Expenses'])).toBe(true);
-    expect(result['User Expenses'][0]?.merchant_name).toBe('Cafe 22');
+    expect(result).toHaveProperty('UserExpenses');
+    expect(Array.isArray(result.UserExpenses)).toBe(true);
+    expect(result.UserExpenses[0]?.merchant_name).toBe('Cafe 22');
   });
 
   test('should return a second page of users expenses', async () => {
@@ -24,9 +24,9 @@ describe('[Packages | Expense-domain] getUserExpenses', () => {
     expect(result?.pageInfo).toHaveProperty('total');
     expect(result?.pageInfo).toHaveProperty('currentPage');
     expect(result?.pageInfo).toHaveProperty('totalPages');
-    expect(result).toHaveProperty('User Expenses');
-    expect(Array.isArray(result['User Expenses'])).toBe(true);
-    expect(result['User Expenses'][0]?.merchant_name).toBe('Donkey Republic');
+    expect(result).toHaveProperty('UserExpenses');
+    expect(Array.isArray(result.UserExpenses)).toBe(true);
+    expect(result.UserExpenses[0]?.merchant_name).toBe('Donkey Republic');
   });
 });
 

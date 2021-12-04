@@ -22,7 +22,7 @@ export interface Ipagination {
         currentPage: number
         totalPages: number
     }
-    queryName: IExpense[]
+    [propname: string]: IExpense[]
 }
 
 export interface IQuery {
