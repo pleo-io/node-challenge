@@ -31,7 +31,7 @@ export async function getUserExpenses({ userId, limit, page }: IQuery): Promise<
   const expenses = rawExpense.map((item) => format(item));
   const total = count?.count * 1 || 0;
 
-  const data = pagination(expenses, 'User Expenses', total, limit, page);
+  const data = pagination(expenses, 'UserExpenses', total, limit, page);
 
   return data;
 }

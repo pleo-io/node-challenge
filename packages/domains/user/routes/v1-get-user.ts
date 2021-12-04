@@ -17,5 +17,5 @@ router.get('/get-user-details', async (req, res, next) => {
     return res.json({});
   }
 
-  return res.json(secureTrim(userDetails));
+  return res.json(JSON.parse(secureTrim(userDetails)));
 });

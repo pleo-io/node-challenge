@@ -20,7 +20,7 @@ router.get('/get-user-expenses', async (req: Request<{}, {}, {}, IQuery>, res: R
   }
 
   // TODO validate response objects fields
-  userExpenses['User Expenses'] = JSON.parse(secureTrim(userExpenses['User Expenses']));
+  userExpenses['UserExpenses'] = JSON.parse(secureTrim(userExpenses['UserExpenses']));
 
   return res.json(userExpenses);
 });
