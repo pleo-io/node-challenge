@@ -31,7 +31,7 @@ app.use(security);
 
 app.use('/user', userRoutes);
 
-app.use(function(err, req, res) {
+app.use(function (err, req, res, next) {
   res.status(500).json(err);
 });
 
