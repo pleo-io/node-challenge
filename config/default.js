@@ -3,9 +3,11 @@ const path = require('path');
 
 module.exports = {
   db: {
-    host: '0.0.0.0',
-    port: 5432,
-    database: 'challenge',
+    host: process.env.DB_HOST || '0.0.0.0',
+    port: process.env.DB_PORT || 5432,
+    database: process.env.DB_NAME || 'challenge',
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
   },
   debug: {
     stackSize: 4,
@@ -13,7 +15,7 @@ module.exports = {
   i18next: {
     translationFilePath: path.resolve(__dirname, '..', 'locales/{{lng}}/{{ns}}.json'),
   },
-  host: 'localhost:9001',
+  host: process.env.HOST || '0.0.0.0',
   https: {
     enabled: false,
   },
