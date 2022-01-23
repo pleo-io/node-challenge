@@ -6,6 +6,9 @@ interface ConfigDefinition {
         key?: string
         cert?: string
     }
+    auth: {
+        jwtSecret: string
+    }
     db: {
         host: string
         port: number
