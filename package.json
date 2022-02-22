@@ -17,11 +17,11 @@
     "start": "node $npm_package_main",
     "lint": "eslint --ext .ts --ext .js .",
     "lint:fix": "eslint --ext .ts --ext .js . --fix",
-    "test": "NODE_ENV=test && yarn test:unit && yarn test:mid-level",
-    "test:acceptance": "NODE_ENV=qa jest test/acceptance/* --forceExit --maxWorkers=4",
-    "test:coverage": "NODE_ENV=qa jest packages/* --forceExit --maxWorkers=4 --coverage",
-    "test:mid-level": "NODE_ENV=qa jest test/mid-level/* --forceExit --maxWorkers=4",
-    "test:unit": "NODE_ENV=qa jest packages/* --forceExit --maxWorkers=4"
+    "test": "yarn test:unit && yarn test:mid-level",
+    "test:acceptance": "jest test/acceptance/* --forceExit --maxWorkers=4 --detectOpenHandles",
+    "test:coverage": "jest packages/* --forceExit --maxWorkers=4 --coverage",
+    "test:mid-level": "jest test/mid-level/* --forceExit --maxWorkers=4",
+    "test:unit": "jest packages/* --forceExit --maxWorkers=4"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,4 @@
-import { agent } from 'supertest';
-import config from 'config';
+import { createExpressApplication } from '../../../app';
+import request from 'supertest';
 
-export const Api = agent(process.env.API_URL_OVERRIDE || `${config.https?.enabled ? 'https://' : 'http://'}${config.host}`);
+export const Api = request(createExpressApplication());
