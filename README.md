@@ -16,6 +16,20 @@ Fork this repo with your solution. Ideally, we'd like to see your progression th
 
 Please let us know how long the challenge takes you. We're not looking for how speedy or lengthy you are. It's just really to give us a clearer idea of what you've produced in the time you decided to take. Feel free to go as big or as small as you want.
 
+## Description
+
+First of all thanks for the opportunity to make this challenge. It is very interesting.  It might take one or two days to finish it. 
+
+My first solution approach is:
+ [ ] Create the expensive API under the endpoint GET `/expenses` with defined search criteria and allows some pagination. 
+ [ ] Define a presenter layer (a.k.a controllers) by extracting the routing callback functions into a different file.
+ [ ] Add a docker-compose file to wrap all the infrastructure so that it does not need to have it in local machine.
+ [ ] Refactor the configuration to get them from environment variables.
+
+
+ If I have time
+ [ ] Add Graphql presenter layer.  
+
 ## Install
 
 Make sure that you have a modern version of `yarn` that supports workspaces (`>= 1.0`), then run:
