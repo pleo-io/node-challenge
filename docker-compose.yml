@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:12
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_MULTIPLE_DATABASES=db
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+      - ./data/docker-postgresql-multiple-databases:/docker-entrypoint-initdb.d
+      - ./dump.sql:/dump_files/dump.sql
+    container_name: db

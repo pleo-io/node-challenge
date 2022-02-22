@@ -68,3 +68,7 @@ package-lock.json
 .DS_Store
 
 bin
+
+
+# database 
+data/db
