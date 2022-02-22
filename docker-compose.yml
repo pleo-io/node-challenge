@@ -1,0 +1,31 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    container_name: pleo_db
+    networks:
+      - webnet
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  app:
+    build: .
+    container_name: pleo_api
+    env_file:
+      - ./.env
+    restart: always
+    networks:
+      - webnet
+    depends_on:
+      - db
+    ports:
+      - "9001:9001"
+networks:
+  webnet:
+volumes:
+  postgres-data:
