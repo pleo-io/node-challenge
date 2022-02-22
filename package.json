@@ -41,14 +41,15 @@
   },
   "homepage": "https://github.com/pleo-io/node-challenge#readme",
   "dependencies": {
-    "@nc/domain-user": "0.0.0",
     "@nc/domain-expense": "0.0.0",
+    "@nc/domain-user": "0.0.0",
     "@nc/utils": "0.0.0",
     "config": "^3.3.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.0",
     "ha-dns-cache": "^1.0.0",
     "helmet": "^4.6.0",
+    "joi": "^17.6.0",
     "ts-node": "^10.2.0",
     "typescript": "^4.4.0"
   },
