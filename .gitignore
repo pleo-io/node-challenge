@@ -72,3 +72,9 @@ bin
 
 # database 
 data/db
+
+
+# Enviroment Variables
+.env
+.env.*
+!.env.example
