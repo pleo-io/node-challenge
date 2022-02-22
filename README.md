@@ -23,8 +23,8 @@ First of all thanks for the opportunity to make this challenge. It is very inter
 My first solution approach is:
  [ ] Create the expensive API under the endpoint GET `/expenses` with defined search criteria and allows some pagination. 
  [ ] Define a presenter layer (a.k.a controllers) by extracting the routing callback functions into a different file.
- [ ] Add a docker-compose file to wrap all the infrastructure so that it does not need to have it in local machine.
- [ ] Refactor the configuration to get them from environment variables.
+ [X] Add a docker-compose file to wrap all the infrastructure so that it does not need to have it in local machine.
+ [X] Refactor the configuration to get them from environment variables.
 
 
  If I have time
