@@ -7,7 +7,16 @@ function create_user_and_database() {
 	
 	local database=$1
 	echo "  Creating user and database '$database'"
-	psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" < ../dump_files/dump.sql
+
+	psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
+	    CREATE USER "$database";
+	    CREATE DATABASE "$database";
+	    GRANT ALL PRIVILEGES ON DATABASE "$database" TO "$database";
+	EOSQL
+	echo "Databases $database created"
+	psql $database  < ../dump_files/dump.sql
+
+	echo "Databases $database restored"
 }
 
 if [ -n "$POSTGRES_MULTIPLE_DATABASES" ]; then
@@ -15,8 +24,7 @@ if [ -n "$POSTGRES_MULTIPLE_DATABASES" ]; then
 	for db in $(echo $POSTGRES_MULTIPLE_DATABASES | tr ',' ' '); do
 		create_user_and_database $db
 	done
-	echo "Multiple databases created"
 fi
 
-echo "Databases created"
+echo "Dump file resotre sucessfully"
 
