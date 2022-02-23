@@ -10,6 +10,8 @@ module.exports = {
     host: process.env.DB_HOST || '0.0.0.0',
     port: process.env.DB_PORT || 5432,
     database: process.env.DB_NAME || 'challenge',
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
   },
   debug: {
     stackSize: process.env.DEBUG_STACK_SIZE || 4,
