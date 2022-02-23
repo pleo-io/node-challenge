@@ -1,4 +1,4 @@
-import { Expenses } from '../expenses';
+import { Expenses } from './expenses.models';
 import { query } from '@nc/utils/db';
 import { Page, QueryPage, SortingEnum, SortingType } from '@nc/utils/types';
 
@@ -82,3 +82,11 @@ function addSorting<T>(sqlTemplate: string, sorting?: SortingType<T>): string {
   if (!sorting) { return sqlTemplate.replace(':sorting', ''); }
   return sqlTemplate.replace(':sorting', `order by ${sorting.fields} ${sorting.sort || SortingEnum.ASCENDENT}`);
 }
+
+export interface ExpensesRepository {
+  getExpenses(criteria: QueryPage<Expenses>): Promise<Page<Expenses>>
+}
+
+export const repository: ExpensesRepository = {
+  getExpenses,
+};

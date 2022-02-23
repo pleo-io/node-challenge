@@ -1,4 +1,7 @@
-import { Status } from './status';
+export enum Status {
+  Pending = 'pending',
+  Processed = 'Processed'
+}
 
 export interface Expenses {
   id?: string

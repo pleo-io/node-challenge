@@ -1,9 +1,8 @@
-import { Expenses } from '../../expenses';
-import { getExpenses } from '../../data/db-expenses';
+import { getExpenses } from '../../src/expenses.repository';
 import { randomUUID } from 'crypto';
 import { SortingEnum } from '@nc/utils/types';
-import { Status } from '../../status';
 import { close, connect, query } from '@nc/utils/db';
+import { Expenses, Status } from '../../src/expenses.models';
 
 describe('Expenses Db', () => {
   beforeAll(async () => {
