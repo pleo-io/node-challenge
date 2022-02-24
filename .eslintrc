@@ -122,20 +122,7 @@
           "named": "never"
         }
       ],
-      "sort-imports": [
-        "error",
-        {
-          "ignoreCase": true,
-          "ignoreDeclarationSort": false,
-          "ignoreMemberSort": false,
-          "memberSyntaxSortOrder": [
-            "none",
-            "all",
-            "single",
-            "multiple"
-          ]
-        }
-      ],
+   
       "linebreak-style": "off",
       "no-lonely-if": "off",
       "@typescript-eslint/member-delimiter-style": [

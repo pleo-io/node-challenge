@@ -5,7 +5,10 @@
     "private": true,
     "dependencies": {
       "@nc/utils": "^0.0.0",
-      "express": "^4.17.0"
+      "express": "^4.17.0",
+      "class-transformer-validator": "^0.9.1",
+      "class-validator": "^0.13.2"
+      
     },
     "devDependencies": {
       "@nc/test-utils": "0.0.1"
