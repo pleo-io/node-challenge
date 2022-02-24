@@ -1,9 +1,11 @@
+import 'reflect-metadata';
 import context from './middleware/context';
-import express, { Express } from 'express';
-
+import { router as expensesRoutes } from '@nc/domain-expense';
 import helmet from 'helmet';
 import security from './middleware/security';
+import error from './middleware/error';
 import { router as userRoutes } from '@nc/domain-user';
+import express, { Express } from 'express';
 
 export function createExpressApplication(): Express {
   const app = express();
@@ -25,14 +27,12 @@ export function createExpressApplication(): Express {
   });
 
   app.use('/user', userRoutes);
+  app.use('/expenses', expensesRoutes);
 
   app.use(function(req, res) {
     res.status(404).end();
   });
 
-  app.use(function(err, req, res) {
-    res.status(500).json(err);
-  });
-
+  app.use(error);
   return app;
 }
