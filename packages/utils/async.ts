@@ -1,3 +1,5 @@
+import { NextFunction, Request, Response } from 'express';
+
 export function mute(resolver: (args: any) => any, params: any[]): Promise<void> {
   const handle = Promise.resolve();
   process.nextTick(() => resolver(params).catch((): void => undefined));
@@ -27,4 +29,10 @@ export function sequence<T, K>(array: Array<K>, operation: (item: K, index: numb
       return operation(item, index).then((currentResult) => [...chainResults, currentResult]);
     });
   }, Promise.resolve([]));
+}
+
+export function catchAsync(func: Function) {
+  return function(request: Request, response: Response, next: NextFunction) {
+    func(request, response, next).catch(next);
+  };
 }

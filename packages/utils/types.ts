@@ -12,7 +12,7 @@ export enum SortingEnum {
 
 export type SortingType<Criteria> = {
 
-    fields: keyof Criteria
+    field: keyof Criteria
     sort?: SortingEnum
 
  }

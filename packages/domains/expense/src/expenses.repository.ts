@@ -79,8 +79,9 @@ function addConditionToQuery<T>(sqlTemplate: string, criteria: Partial<T>): [str
  * @returns replace :sorting substring in @see sqlTemplate for an order by clause if it's needed
  */
 function addSorting<T>(sqlTemplate: string, sorting?: SortingType<T>): string {
-  if (!sorting) { return sqlTemplate.replace(':sorting', ''); }
-  return sqlTemplate.replace(':sorting', `order by ${sorting.fields} ${sorting.sort || SortingEnum.ASCENDENT}`);
+  if (!(sorting && sorting.field)) { return sqlTemplate.replace(':sorting', ''); }
+
+  return sqlTemplate.replace(':sorting', `order by ${sorting.field} ${sorting.sort || SortingEnum.ASCENDENT}`);
 }
 
 export interface ExpensesRepository {
