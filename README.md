@@ -98,7 +98,7 @@ docker-compose up -d
  **note:** Make sure that you have a modern version of `yarn` that supports workspaces, then run:
 
 ```bash
-yarn test
+NODE_ENV=test yarn test
 ```
 
 The command above will run the following test suites sequentially:
