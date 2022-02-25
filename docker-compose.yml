@@ -1,6 +1,19 @@
 version: '3.8'
 
 services:
+  app:
+    user: "${USER_ID}:${GROUP_ID}"
+    build:
+      context: .
+      target: development
+    container_name: seller-gateway-service
+    ports:
+      - "3000:3000"
+      - "0.0.0.0:9300:9229"
+    volumes:
+      - .:/usr/src/app:cached
+    depends_on:
+      - redis
   db:
     image: postgres:12
     ports:
