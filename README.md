@@ -40,7 +40,7 @@ Please let us know how long the challenge takes you. We're not looking for how s
  - [ ] Add swagger for development environment
  
  ### Challenges I faced.
-  * During the validation of the sorting field in the expenses.dto the @ValidatedNested decorators didn't work for me. So in order to work around it I created a custom decorator to fullfil the job, Here might be a area of improvement. 
+  * During the validation of the sorting field in the expenses.dto the @ValidatedNested decorators didn't work for me. So in order to work around it I created a custom decorator to fullfil the job, Here might be an area of improvement. 
 
  
 ### How long it took me to get this point.
