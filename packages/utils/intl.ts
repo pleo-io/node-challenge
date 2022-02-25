@@ -1,4 +1,4 @@
-import config from 'config';
+import config from '../../config';
 import i18next from 'i18next';
 import i18nextBackend from 'i18next-fs-backend';
 import { InternalError } from './errors';

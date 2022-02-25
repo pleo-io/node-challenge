@@ -1,4 +1,4 @@
-import config from 'config';
+import config from '../../config';
 import stoppable from 'stoppable';
 
 const shutdownRoutine = {

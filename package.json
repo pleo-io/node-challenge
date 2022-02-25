@@ -47,7 +47,7 @@
     "class-transformer": "^0.5.1",
     "class-transformer-validator": "^0.9.1",
     "class-validator": "^0.13.2",
-    "config": "^3.3.0",
+
     "dotenv": "^10.0.0",
     "express": "^4.17.0",
     "ha-dns-cache": "^1.0.0",

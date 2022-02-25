@@ -1,4 +1,4 @@
-import config from 'config';
+import config from '../../config';
 import { Client, QueryResult } from 'pg';
 
 let db: Client;

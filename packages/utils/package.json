@@ -4,7 +4,6 @@
     "description": "Utils package",
     "private": true,
     "dependencies": {
-        "config": "^3.3.0",
         "i18next": "^21.0.0",
         "i18next-fs-backend": "^1.1.0",
         "pg": "^8.7.0",
