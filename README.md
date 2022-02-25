@@ -18,17 +18,35 @@ Please let us know how long the challenge takes you. We're not looking for how s
 
 ## Description
 
-First of all thanks for the opportunity to make this challenge. It is very interesting.  It might take one or two days to finish it. 
-
-My first solution approach is:
- [ ] Create the expensive API under the endpoint GET `/expenses` with defined search criteria and allows some pagination. 
- [ ] Define a presenter layer (a.k.a controllers) by extracting the routing callback functions into a different file.
- [X] Add a docker-compose file to wrap all the infrastructure so that it does not need to have it in local machine.
- [X] Refactor the configuration to get them from environment variables.
 
 
- If I have time
- [ ] Add Graphql presenter layer.  
+### What I did. 
+ [X] Create the expenses API under the endpoint GET `/expenses/get-expenses` with defined search criteria and allows some pagination. 
+  - [X] Add class-validator and class-transformer to make easier the http request validation. 
+  - [X] Create catchAsync function to decorate controllers action in order to manage the unexpected async error and reduce the dependency of next function. 
+ [X] Add a docker-compose file to wrap all the infrastructure so that it does not need to have it in the host machine.
+ [X] Refactor the configuration to get them from environment variables. 
+ [X] Separate the server creation from the application creation to separate both responsibilities
+ [X] Upgrade the `jest.config.js` files. 
+ ### What I would have done if I have time
+ [ ] Add to the docker-compose the application.
+ [ ] Add Github actions to enable a ci pipeline.
+ [ ] Separate all applications files (a.k.a middleware, server.ts , etc ) in a different folder leaving just the configuration files and the entry point in the folder root.  
+ [ ] Standardised the  modules by following the pattern from expenses packages
+ [ ] Improve logging by externalizing the implementation by using either [pino](npmjs.com/package/pino) or [wiston](npmjs.com/package/winston). 
+ [ ] Improve the observability by adding Prometheus to collect either system metrics or custom metrics
+ [ ] Improve the readiness check by checking if the database is alive
+ [ ] Add more typing to the object and functions.  
+ 
+ ### Chanllenges I faced.
+  * During the validation of the sorting field in the expenses.dto the @ValidatedNested decorators didn't work for me. So in order to work around it I created a custom decorator to fullfil the job, Here might be a area of improvement. 
+  * During the tests execution I face with a annoying warning that I couldn't figure it out how to remove it: See below
+    `console.error WARNING: NODE_ENV value of 'test' did not match any deployment config file names.`
+
+
+ 
+### How long it took me to get this point.
+I started working on Wednesday and finish on friday morning, dedicating around 5 hours per day.
 
 ## Install
 
@@ -38,23 +56,48 @@ Make sure that you have a modern version of `yarn` that supports workspaces (`>=
 yarn
 ```
 
-You will also need to [install Postgres](https://www.postgresqltutorial.com/install-postgresql-macos/), create a `challenge` database and load the sql file `dump.sql`:
-
-```bash
-psql challenge < dump.sql
-```
 
 ## Start
 
-To enable logs, use the standard `NODE_DEBUG` flag with the value `DEBUG`
+1.  ##### Set environment variables
+```bash 
+  cp ./.env.example ./.env
+```
 
+2. ##### Run docker-composer 
 ```bash
+docker-compose up -d
+```
+
+3.  ##### Start the application
+  **note:** To enable logs, use the standard `NODE_DEBUG` flag with the value `DEBUG`
+```bash
+
 NODE_DEBUG=DEBUG yarn start
 ```
 
 ## Test
 
-Make sure that you have a modern version of `yarn` that supports workspaces, then run:
+1.  ##### Set environment variables
+```bash 
+   cp ./.env.example ./.env.test
+```
+and copy on `.env.test` the following
+``` 
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_NAME=challenge
+DB_USER=postgres
+DB_PASSWORD=postgres
+```
+
+2.  ##### Run docker-composer 
+```bash
+docker-compose up -d
+```
+
+3. ##### Run test
+ **note:** Make sure that you have a modern version of `yarn` that supports workspaces, then run:
 
 ```bash
 yarn test
