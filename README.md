@@ -37,12 +37,10 @@ Please let us know how long the challenge takes you. We're not looking for how s
  - [ ] Improve the observability by adding Prometheus to collect either system metrics or custom metrics
  - [ ] Improve the readiness check by checking if the database is alive
  - [ ] Add more typing to the object and functions.  
+ - [ ] Add swagger for development environment
  
  ### Challenges I faced.
   * During the validation of the sorting field in the expenses.dto the @ValidatedNested decorators didn't work for me. So in order to work around it I created a custom decorator to fullfil the job, Here might be a area of improvement. 
-  * During the tests execution I face with a annoying warning that I couldn't figure it out how to remove it: See below
-    `console.error WARNING: NODE_ENV value of 'test' did not match any deployment config file names.`
-
 
  
 ### How long it took me to get this point.
