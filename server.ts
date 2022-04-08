@@ -8,6 +8,7 @@ import security from './middleware/security';
 import { router as userRoutes } from '@nc/domain-user';
 import { createServer as createHTTPServer, Server } from 'http';
 import { createServer as createHTTPSServer, Server as SecureServer } from 'https';
+import { ApiError, ApiErrorType, InternalError } from '@nc/utils/errors';
 
 const logger = Logger('server');
 const app = express();
@@ -32,8 +33,8 @@ app.use(security);
 app.use('/user', userRoutes);
 
 app.use(function (err, req, res, next) {
-  // read http status from err
-  res.status(err.status).json(err);
+  if (err instanceof ApiError) return res.status((err as unknown as ApiErrorType).status).json(err);
+  return res.status(500).json(InternalError('Something went wrong!!', null, err));
 });
 
 server.listen(config.port, () => {
