@@ -1,4 +1,6 @@
 import sequelize from "@nc/utils/db";
+import { SortingCriteria } from "@nc/utils/types";
+import { IsDateString, IsInt, IsOptional, IsPositive, IsString, IsUUID } from 'class-validator';
 
 const { Model, DataTypes } = require('sequelize');
 
@@ -14,7 +16,7 @@ Expense.init({
         allowNull: false
     },
     merchant_name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false
     },
     amount_in_cents: {
@@ -39,16 +41,43 @@ Expense.init({
     timestamps: false
 });
 
-export interface SearchExpensesRequest {
+export class SearchExpensesRequest {
+
+    @IsString()
     userId: String
+
+    @IsDateString()
     pageToken: Date
+
+    @IsInt()
+    @IsPositive()
+    @IsOptional()
     pageSize: Number
-    orderBy: String
-    orderDir: String
+
+    @IsString({ each: true })
+    @IsOptional()
     statuses: Array<String>
+
+    @IsString({ each: true })
+    @IsOptional()
     expenseIds: Array<String>
+
+    @IsString({ each: true })
+    @IsOptional()
     merchants: Array<String>
+
+    @IsInt()
+    @IsOptional()
     minAmount: Number
+
+    @IsInt()
+    @IsOptional()
     maxAmount: Number
+
+    @IsString({ each: true })
+    @IsOptional()
     currencies: Array<String>
+
+    // TODO: register custom validator
+    sortBy: Array<SortingCriteria<Expense>>
 }
