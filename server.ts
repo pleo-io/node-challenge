@@ -32,7 +32,8 @@ app.use(security);
 app.use('/user', userRoutes);
 
 app.use(function (err, req, res, next) {
-  res.status(500).json(err);
+  // read http status from err
+  res.status(err.status).json(err);
 });
 
 server.listen(config.port, () => {
