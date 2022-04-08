@@ -12,6 +12,7 @@ interface ConfigDefinition {
     db: {
         host: string
         port: number
+        dialect: string
         database: string
         user: string
         password: string
