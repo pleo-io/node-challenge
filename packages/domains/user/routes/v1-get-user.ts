@@ -10,7 +10,7 @@ router.get('/get-user-details', async (req, res, next) => {
   const [userError, userDetails] = await to(getUserDetails(req.query?.userId));
 
   if (userError) {
-    return next(new ApiError(userError, userError.status, `Could not get user details: ${userError}`, userError.title, req));
+    return next(new ApiError(userError, userError.status, `Could not get user details: ${userError.message}`, userError.title, req));
   }
 
   if (!userDetails) {

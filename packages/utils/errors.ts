@@ -8,12 +8,12 @@ export interface ApiErrorType {
   details?: any
   message: string
   source: {
-      error: any
-      request: {
-          headers: string[]
-          id: string
-          url: string
-      }
+    error: any
+    request: {
+      headers: string[]
+      id: string
+      url: string
+    }
   }
   stack: any
   status: number
