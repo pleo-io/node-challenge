@@ -6,6 +6,7 @@ import helmet from 'helmet';
 import Logger from '@nc/utils/logging';
 import security from './middleware/security';
 import { router as userRoutes } from '@nc/domain-user';
+import { router as expenseRoutes } from '@nc/domain-expense';
 import { createServer as createHTTPServer, Server } from 'http';
 import { createServer as createHTTPSServer, Server as SecureServer } from 'https';
 
@@ -28,8 +29,10 @@ app.get('/healthcheck', function healthcheckEndpoint(req, res) {
 
 app.use(context);
 app.use(security);
+app.use(express.json())
 
 app.use('/user', userRoutes);
+app.use('/expense', expenseRoutes);
 
 app.use(function (err, req, res, next) {
   // read http status from err
