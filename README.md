@@ -62,7 +62,7 @@ Happy hacking 😁!
 ## Application Setup
 - Fix app build for successful test run. 
 - Externalized DB config: `host, port, username, password, dbname, dialect`. Can also add connection pooling config to this.
-- Run app with config: 
+- Run app with config: `DB_USER=postgres DB_PASS=postgres DB_NAME=challenge yarn start`
 _Time Spent_: 2hrs (approx). Had to setup dev env (node + ide) from scratch. 
 
 ## Expense Domain
