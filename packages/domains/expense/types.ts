@@ -81,3 +81,8 @@ export class SearchExpensesRequest {
     // TODO: register custom validator
     sortBy: Array<SortingCriteria<Expense>>
 }
+
+export enum ExpenseStatus {
+    PENDING = 'pending',
+    PROCESSED = 'processed'
+}

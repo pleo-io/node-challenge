@@ -1,14 +1,12 @@
 import { Expense } from './types';
 
-const publicFields = ['merchant_name', 'currency', 'amount_in_cents', 'status'];
-
 export function capitalize(word) {
   const str = `${word}`;
   return str[0].toUpperCase() + str.slice(1);
 }
 
-export function secureTrim(expense: Expense): string {
-  return JSON.stringify(expense, publicFields);
+export function upperCase(word) {
+  return word.toUpperCase();
 }
 
 export function format(rawExpense: Expense): Expense {

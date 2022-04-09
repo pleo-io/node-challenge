@@ -4,6 +4,6 @@ export interface SortingCriteria<T> {
 }
 
 export enum SortingEnum {
-    ASCENDENT = 'asc',
-    DESCENDENT = 'desc'
+    ASC = 'asc',
+    DESC = 'desc'
 }
