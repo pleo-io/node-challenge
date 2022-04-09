@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
-import { Expense, ExpenseStatus } from '../../domains/expense/types';
-import { destroyUserExpenses, insert } from '../../domains/expense/data/db-expense';
+import { Expense, ExpenseStatus } from '@nc/domain-expense/types';
+import { destroyUserExpenses, insert } from '@nc/domain-expense/data/db-expense';
 
 export function generateExpense(partialExpenses: Partial<Expense> = {}): Expense {
   return {
