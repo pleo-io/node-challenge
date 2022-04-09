@@ -4,6 +4,7 @@
     "alwaysStrict": false,
     "checkJs": false,
     "esModuleInterop": true,
+    "experimentalDecorators": true,
     "module": "commonjs",
     "noEmit": true,
     "resolveJsonModule": true,
@@ -23,4 +24,3 @@
     "test/**/*.ts"
   ]
 }
-  

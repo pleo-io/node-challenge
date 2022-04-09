@@ -4,6 +4,11 @@
     "description": "Expenses domain logic",
     "private": true,
     "dependencies": {
-        "sequelize": "^6.17.0"
+        "@nc/utils": "^0.0.0",
+        "express": "^4.17.0",
+        "sequelize": "^6.17.0",
+        "class-transformer": "^0.5.1",
+        "class-transformer-validator": "^0.9.1",
+        "class-validator": "^0.13.2"
     }
 }
