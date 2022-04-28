@@ -19,7 +19,7 @@ module.exports = {
     'ts-jest': {
       diagnostics: false,
       isolatedModules: true,
-      tsConfig: '<rootDir>/tsconfig.json',
+      tsconfig: '<rootDir>/tsconfig.json',
     },
   },
   modulePathIgnorePatterns: [

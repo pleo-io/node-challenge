@@ -1,4 +1,5 @@
 interface ConfigDefinition {
+    i18next: any
     host: string
     port: number
     https: {
