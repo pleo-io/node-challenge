@@ -5,6 +5,7 @@ import helmet from 'helmet';
 import Logger from '@nc/utils/logging';
 import security from './middleware/security';
 import { router as userRoutes } from '@nc/domain-user';
+import { router as expenseRoutes } from "@nc/domain-expense";
 import { createServer as createHTTPServer, Server } from 'http';
 import {
   createServer as createHTTPSServer,
@@ -45,6 +46,7 @@ app.use(context);
 app.use(security);
 
 app.use('/user', userRoutes);
+app.use('/expense', expenseRoutes);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use(function(err: any, _req: Request, res: Response, _next: NextFunction) {
