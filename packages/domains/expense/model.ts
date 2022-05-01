@@ -4,8 +4,7 @@ import { to } from "@nc/utils/async";
 import { Expense } from "./types";
 import { BadRequest, InternalError, NotFound } from "@nc/utils/errors";
 
-export async function getExpensesForUser(userId) 
-{
+export async function getExpensesForUser(userId) {
   if (!userId) {
     throw BadRequest("userId property not provided.");
   }

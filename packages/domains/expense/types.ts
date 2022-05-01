@@ -4,6 +4,11 @@ type PROCESSED = string;
 type PENDING = string;
 type STATUS = PROCESSED | PENDING;
 
+export type Direction = {
+  asc: string;
+  desc: string;
+};
+
 export interface Expense {
   id: string;
   merchant_name: string;
@@ -14,11 +19,9 @@ export interface Expense {
   status: STATUS;
 }
 
-export interface ExpenseQuery {
-  userId?: string;
-  limit?: number;
-  page?: number;
-  orderBy?: string;
+export interface QueryData {
+  query: string;
+  params: Array<number | string>;
 }
 
 export type Middleware = (

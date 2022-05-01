@@ -5,12 +5,9 @@ import { ApiError } from "@nc/utils/errors";
 import { Middleware } from "../../types";
 
 export const handlerFunction: Middleware = async (req, res, next) => {
-  const [error, expensesForUser] = await to(
-    getExpensesForUser(req.query?.userId)
-  );
+  const [error, expensesForUser] = await to(getExpensesForUser(req.query));
 
   if (error) {
-
     return next(
       new ApiError(
         error,
@@ -27,5 +24,4 @@ export const handlerFunction: Middleware = async (req, res, next) => {
   }
 
   return res.json(secureTrim(expensesForUser));
-
 };
