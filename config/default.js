@@ -7,7 +7,6 @@ module.exports = {
     port: 5432,
     database: "challenge",
   },
-  redisUrl: "redis://localhost:6379",
   debug: {
     stackSize: 4,
   },

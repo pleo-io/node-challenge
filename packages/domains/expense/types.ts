@@ -4,7 +4,7 @@ type PROCESSED = string;
 type PENDING = string;
 type STATUS = PROCESSED | PENDING;
 
-export type Direction = {
+export type FilterDirection = {
   asc: string;
   desc: string;
 };

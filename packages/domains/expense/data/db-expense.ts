@@ -1,5 +1,5 @@
 import { query } from "@nc/utils/db";
-import { QueryData, Direction } from "../types";
+import { QueryData, FilterDirection } from "../types";
 
 const filterOptions: Map<string, string> = new Map([
   ["gte", ">="],
@@ -27,7 +27,7 @@ function pagination(expenseQuery: QueryData, limit: number, offset?: number) {
   }
 }
 
-function sort(expenseQuery: QueryData, value: Direction) {
+function sort(expenseQuery: QueryData, value: FilterDirection) {
   if (typeof value.desc === "string" ) {
     expenseQuery.query += `ORDER BY ${value.desc} DESC`;
   } else if (

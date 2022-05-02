@@ -12,7 +12,6 @@ interface ConfigDefinition {
     port: number;
     database: string;
   };
-  redisUrl: string;
   debug: {
     stackSize: number;
   };
