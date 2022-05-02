@@ -57,6 +57,7 @@ function filter(
     }
   }
 }
+
 export function readUserExpenses(reqQuery) {
   const userExpenseQuery: QueryData = {
     query: `SELECT * FROM expenses WHERE user_id = $1`,
