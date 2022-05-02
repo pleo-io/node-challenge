@@ -1,19 +1,24 @@
-require('dotenv').config();
-const path = require('path');
+require("dotenv").config();
+const path = require("path");
 
 module.exports = {
   db: {
-    host: '0.0.0.0',
+    host: "0.0.0.0",
     port: 5432,
-    database: 'challenge',
+    database: "challenge",
   },
+  redisUrl: "redis://localhost:6379",
   debug: {
     stackSize: 4,
   },
   i18next: {
-    translationFilePath: path.resolve(__dirname, '..', 'locales/{{lng}}/{{ns}}.json'),
+    translationFilePath: path.resolve(
+      __dirname,
+      "..",
+      "locales/{{lng}}/{{ns}}.json"
+    ),
   },
-  host: 'localhost:9001',
+  host: "localhost:9001",
   https: {
     enabled: false,
   },

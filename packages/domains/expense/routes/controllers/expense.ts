@@ -22,6 +22,6 @@ export const handlerFunction: Middleware = async (req, res, next) => {
   if (!expensesForUser) {
     return res.json({});
   }
-
   return res.json(secureTrim(expensesForUser));
+
 };
