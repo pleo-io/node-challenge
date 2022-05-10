@@ -3,5 +3,7 @@
     "version": "0.0.0",
     "description": "Expenses domain logic",
     "private": true,
-    "dependencies": {}
+    "dependencies": {
+      "@nc/utils": "^0.0.0"
+    }
   }
