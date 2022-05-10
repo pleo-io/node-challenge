@@ -1,6 +1,6 @@
 import { User } from './types';
 
-const publicFields = ['first_name', 'last_name', 'company_name'];
+const publicFields = ['id', 'first_name', 'last_name', 'company_name'];
 
 export function capitalize(word) {
   const str = `${word}`;
@@ -9,6 +9,13 @@ export function capitalize(word) {
 
 export function secureTrim(user: User): string {
   return JSON.stringify(user, publicFields);
+}
+
+export function secureTrimJSON(user: User) {
+  return publicFields.reduce(
+    (res, key) => (user[key] ? { ...res, [key]: user[key] } : res),
+    {}
+  );
 }
 
 export function format(rawUser): User {
