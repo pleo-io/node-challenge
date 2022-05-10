@@ -31,8 +31,8 @@ app.use(security);
 
 app.use('/user', userRoutes);
 
-app.use(function(err, req, res) {
-  res.status(500).json(err);
+app.use(function(err, req, res, next) {
+  return res.headersSent ? next(err) : res.status(500).json(err);
 });
 
 server.listen(config.port, () => {
