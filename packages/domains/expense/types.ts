@@ -8,11 +8,11 @@ export type Expense = {
   status: string
 }
 
-type ExpenseKey = keyof Omit<Expense, 'id'>
+type ExpenseKey = keyof Expense
 
 export type FindExpenseOptions = {
-  filter?: Pick<Expense, 'status' | 'merchant_name' | 'user_id'>
+  filter?: Partial<Pick<Expense, 'status' | 'user_id'> & { merchant_name_like: string }>
   selection?: ExpenseKey[]
-   sort?: { [p in keyof Omit<Expense, 'id'>]: 1 | -1 }
+  sort?: { [p in keyof Omit<Expense, 'id'>]: 1 | -1 }
   paging?: { limit: number, offset: number }
 }
