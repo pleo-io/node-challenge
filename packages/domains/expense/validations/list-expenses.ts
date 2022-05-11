@@ -1,6 +1,19 @@
 import Joi from 'joi';
 import { RequestValidationSchemaType } from '@nc/utils/request-validation';
 
+const sortingCols = new Set(['merchant_name', 'amount_in_cents', 'currency', 'id', 'date_created', 'status']);
+const sortTypes = new Set(['asc', 'desc']);
+
+const sortValidator: Joi.CustomValidator<any> = (value) => {
+  const [column, type] = value.split(':');
+
+  const isInvalid = !sortTypes.has(type) || !sortingCols.has(column);
+
+  if (isInvalid) throw new Error('invalid sort');
+
+  return { column, type: type === 'asc' ? 1 : -1 };
+};
+
 export const listExpenseValidation: RequestValidationSchemaType = Joi.object({
   query: Joi.object({
     user_id: Joi.string()
@@ -26,5 +39,15 @@ export const listExpenseValidation: RequestValidationSchemaType = Joi.object({
       .min(1)
       .max(50)
       .error(new Error('limit query must be between 1 and 50!')),
+
+    sort: Joi.array()
+      .items(
+        Joi.string()
+          .custom(sortValidator, 'sort validation')
+          .error(new Error(`sort query must be one of ${Array.from(sortingCols).join(', ')}, optionally followed by type ex: (id:asc, id:desc)`))
+      )
+      .single()
+      .unique()
+      .min(1),
   }),
 });
