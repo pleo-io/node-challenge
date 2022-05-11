@@ -1,62 +1,50 @@
-import { FindExpenseOptions } from './types';
+import { InternalError } from '@nc/utils/errors';
+import { Knex } from 'knex';
+import { knexClient } from '@nc/utils/knex';
+import { to } from '@nc/utils/async';
+import { Expense, FindExpenseOptions } from './types';
 
-import { query } from '@nc/utils/db';
+const applyExpensesFilter = (query: Knex.QueryBuilder, filter: FindExpenseOptions['filter']) => {
+  Object.entries(filter).forEach(([key, value]) => {
+    if (key === 'merchant_name_like') query.andWhereLike('merchant_name', `%${value}%`);
 
-const tableName = 'expenses';
-
-const getFilterQuery = (filter: FindExpenseOptions['filter']): [string, any[]] => {
-  const filterAttributes = [];
-  const parameters = [];
-
-  Object.entries(filter).forEach(([key, value], index) => {
-    if (key === 'merchant_name_like') {
-      filterAttributes.push(`merchant_name like $${index + 1}`);
-      parameters.push(`%${value}%`);
-    } else {
-      filterAttributes.push(`${key} = $${index + 1}`);
-      parameters.push(value);
-    }
+    else query.andWhere({ [key]: value });
   });
-
-  return [`WHERE ${filterAttributes.join(' AND ')}`, parameters];
 };
+
+const applyExpensesSort = (query: Knex.QueryBuilder, sort: FindExpenseOptions['sort']) => {
+  const sortingCols = Object.entries(sort)
+    .map(([key, value]) => ({ column: key, order: value === 1 ? 'asc' : 'desc' }));
+
+  query.orderBy(sortingCols);
+};
+
+const queryBuilder = () => knexClient<Expense>('expenses', { only: true });
 
 export const expenseRepository = {
   findAll: async ({ filter, selection, sort, paging }: FindExpenseOptions) => {
-    const columns = selection?.length ? Array.from(new Set(selection)) : ['*'];
+    const columns = selection?.length ? Array.from(new Set(selection)) : [];
 
-    const queryParts = [`SELECT ${columns.join(',')} FROM ${tableName}`];
-    const parameters = [];
+    const query = queryBuilder().select(...columns);
 
-    if (filter) {
-      const [filterQuery, filterParams] = getFilterQuery(filter);
-      queryParts.push(filterQuery);
-      parameters.push(...filterParams);
-    }
+    if (filter) applyExpensesFilter(query, filter);
+    if (sort) applyExpensesSort(query, sort);
 
-    if (sort) {
-      // apply sort
-    }
+    const [error, expenses] = await to(query.limit(paging?.limit ?? 25).offset(paging?.offset ?? 0));
 
-    queryParts.push(`LIMIT ${paging?.limit ?? 25} OFFSET ${paging?.offset ?? 0}`);
+    if (error) throw InternalError(error.message, error);
 
-    const { rows } = await query(queryParts.join(' '), parameters);
-
-    return rows;
+    return expenses;
   },
 
   count: async ({ filter }: Pick<FindExpenseOptions, 'filter'>) => {
-    const queryParts = [`SELECT COUNT(id) FROM ${tableName}`];
-    const parameters = [];
+    const query = queryBuilder().count('id');
+    if (filter) applyExpensesFilter(query, filter);
 
-    if (filter) {
-      const [filterQuery, filterParams] = getFilterQuery(filter);
-      queryParts.push(filterQuery);
-      parameters.push(...filterParams);
-    }
+    const [error, { count }] = await to(query.first());
 
-    const { rows } = await query(queryParts.join(' '), parameters);
+    if (error) throw InternalError(error.message, error);
 
-    return parseInt(rows?.[0]?.count);
+    return typeof count === 'string' ? parseInt(count) : count;
   },
 };
