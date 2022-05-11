@@ -56,3 +56,25 @@ The command above will run the following test suites sequentially:
 
 
 Happy hacking 😁!
+
+## Solution
+
+### Common
+* Modify app routes structure to be more rest standards each domain register it's route with `${domain}-managements` prefix, for example all `user` domain routes will be served with `/user-management/*`
+* Add [knex](https://knexjs.org/) -*query builder*- to the project to perform sql queries instead of native `pg` module
+* Add golabl validate middleware that rely on [Joi](https://joi.dev/api/?v=17.6.0) to provide centeral API Request validator
+* Add a docker-compose file to up a pg container locally (to facilitate running the db instance)
+
+### User Domain
+* Modify `v1-get-user.ts`, rename route to follow rest standard use `users/:id` instead of `get-user-details`
+* Modify response serializer to return JSON instead of stringified object
+* Add Joi validation with proper error message
+* Add acceptance tests (e2e test cases for get user details endpoint)
+
+### Expense Domain
+* Use MVC like structure to organize domain/package files with a simple repository that encapsulate data layer
+  * `expense.service` to encapsulate business logic (collect data from different repos. or apply additional filter depending on data access)
+  * `expense.repository` to encapulate the communication with data storage
+  * `expense.controller` which is the data representation layer. in our case it's responsible for aggregate req (query, params) and send the valid http response
+  * `v1-get-expense` which is the registered route with all necessary middleware (for now we only have one middleware but it could vary)
+* Add acceptance tests (e2e test cases for list expense endpoint)
