@@ -4,9 +4,10 @@ services:
   api:
     image: node:16.15.1-bullseye
     command: >
-      sh -c "apt install -y python3 && cd /usr/src/app/ && yarn install && 
-             export NODE_ENV=dev && 
-             yarn watch"
+      sh -c "apt install -y python3 && cd /usr/src/app/ && 
+            yarn install && 
+            export NODE_ENV=dev && 
+            yarn watch"
     volumes:
       - ./:/usr/src/app/
     ports:
