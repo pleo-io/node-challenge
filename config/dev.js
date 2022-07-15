@@ -1,25 +1,11 @@
-const path = require('path');
+const defaultSettings = require('./default');
 module.exports = {
+  ...defaultSettings,
   db: {
-    host: 'db',
+    host: 'db', // Docker compose internal network
     port: 5432,
     database: 'challenge',
     user: 'postgres',
     password: 'postgres',
-  },
-  debug: {
-    stackSize: 4,
-  },
-  i18next: {
-    translationFilePath: path.resolve(__dirname, '..', 'locales/{{lng}}/{{ns}}.json'),
-  },
-  host: 'localhost:9001',
-  https: {
-    enabled: false,
-  },
-  port: process.env.PORT || 9001,
-  shutdown: {
-    appKill: 1000,
-    serverClose: 100,
   },
 };

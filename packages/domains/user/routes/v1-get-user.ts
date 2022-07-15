@@ -16,6 +16,6 @@ router.get('/get-user-details', async (req, res, next) => {
   if (!userDetails) {
     return res.json({});
   }
-
-  return res.json(secureTrim(userDetails));
+  res.header('content-type', 'application/json');
+  return res.send(secureTrim(userDetails));
 });
