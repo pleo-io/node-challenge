@@ -2,11 +2,9 @@ version: "3.8"
 
 services:
   api:
-    #We use debian instead of alpine because it comes pre-installed with some deps like make and gcc etc.
-    image: node:16.15.1-bullseye
+    image: node:16
     command: >
-      sh -c "apt install -y python3 && 
-            yarn install && 
+      sh -c "yarn install && 
             export NODE_ENV=dev && 
             yarn watch"
     working_dir: /usr/src/app

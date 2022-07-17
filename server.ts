@@ -1,13 +1,16 @@
-import config from 'config';
-import context from './middleware/context';
-import gracefulShutdown from '@nc/utils/graceful-shutdown';
-import helmet from 'helmet';
-import Logger from '@nc/utils/logging';
-import security from './middleware/security';
+import { router as expenseRoutes } from '@nc/domain-expense';
 import { router as userRoutes } from '@nc/domain-user';
+import gracefulShutdown from '@nc/utils/graceful-shutdown';
+import Logger from '@nc/utils/logging';
+import SequalizeInstance from '@nc/utils/sequalizeInstance';
+import config from 'config';
+import express, { NextFunction, Request, Response } from 'express';
+import helmet from 'helmet';
 import { createServer as createHTTPServer, Server } from 'http';
 import { createServer as createHTTPSServer, Server as SecureServer } from 'https';
-import express, { NextFunction, Request, Response } from 'express';
+
+import context from './middleware/context';
+import security from './middleware/security';
 
 const logger = Logger('server');
 const app = express();
@@ -32,6 +35,7 @@ app.use(context);
 app.use(security);
 
 app.use('/user', userRoutes);
+app.use('/expense', expenseRoutes);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use(function errorRequestHandler(err, req: Request, res: Response, next: NextFunction) {
@@ -40,7 +44,10 @@ app.use(function errorRequestHandler(err, req: Request, res: Response, next: Nex
 });
 
 server.listen(config.port, () => {
-  serverReady = true;
+  SequalizeInstance.sync()
+    .then(() => {
+      serverReady = true;
+    });
   logger.log(`Server started on port ${config.port}`);
 });
 

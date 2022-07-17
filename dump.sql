@@ -47,9 +47,7 @@ CREATE TABLE public.expenses (
                                  currency character varying(10),
                                  user_id uuid,
                                  date_created timestamp without time zone,
-                                 status character varying(100),
-                                 CONSTRAINT FK_user FOREIGN KEY(user_id)
-                                     REFERENCES public.users(id)
+                                 status character varying(100)
 );
 
 

@@ -1,23 +1,14 @@
-import { format } from './formatter';
-import { readUser } from './data/db-user';
-import { to } from '@nc/utils/async';
+import { BadRequest, InternalError } from '@nc/utils/errors';
+import { readUser } from './service/db-user';
 import { User } from './types';
-import { BadRequest, InternalError, NotFound } from '@nc/utils/errors';
 
 export async function getUserDetails(userId): Promise<User> {
   if (!userId) {
     throw BadRequest('userId property is missing.');
   }
-
-  const [dbError, rawUser] = await to(readUser(userId));
-
-  if (dbError) {
-    throw InternalError(`Error fetching data from the DB: ${dbError.message}`);
+  try {
+    return await readUser(userId);
+  } catch (error) {
+    throw InternalError(`Error fetching data from the DB: ${error.message}`);
   }
-
-  if (!rawUser) {
-    throw NotFound(`Could not find user with id ${userId}`);
-  }
-
-  return format(rawUser);
 }

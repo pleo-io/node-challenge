@@ -1,6 +1,6 @@
 import config from 'config';
 
-config.auth.jwtSecret = 'some-fake-key';
+Object.assign(config, { auth: { jwtSecret: 'some-fake-key' } });
 
 process.env.TEST_MODE = 'test';
 
