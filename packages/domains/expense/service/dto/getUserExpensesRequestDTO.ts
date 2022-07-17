@@ -10,7 +10,7 @@ interface Filters {
 
 // Todo: create a dto for the filters so that we can validate them
 // -regex match for datetime to iso format
-// -perhaps run a sql sanitation uitl on each filter
+// -perhaps run a sql sanitation util on each filter
 
 class GetUserExpensesRequestDTO {
     @IsUUID()
