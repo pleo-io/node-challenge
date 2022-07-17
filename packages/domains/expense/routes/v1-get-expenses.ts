@@ -28,6 +28,7 @@ router.get('/get-user-expenses/:userID',
         date_to: req.query.date_to,
         status: req.query.status,
       });
+    // The data transfer object is our contract ... it exposes a validation method
     const validationErrors = await dto.validate();
     if (validationErrors) {
       res.status(statusCode.BAD_REQUEST)

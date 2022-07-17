@@ -78,10 +78,10 @@ Happy hacking 😁!
   controller , validation can be
   done on the dto
   object
-    * Essentially any time a data object is transferred from one layer to another we do it via a data transfer object
-      , and we validate the data before sending it to the next layer
-    * We define a "validate" method on the dto class
-    * Inspiration was taken from django's serializers and nestjs validation pipelines
+  * Essentially any time a data object is transferred from one layer to another we do it via a data transfer object
+    , and we validate the data before sending it to the next layer
+  * We define a "validate" method on the dto class
+  * Inspiration was taken from django's serializers and nestjs validation pipelines
 
 ## How to test:
 
@@ -97,3 +97,4 @@ curl --location --request GET 'http://localhost:9001/expense/v1/get-user-expense
 - I added a single unit test example for one of the DTO objects as a unit-test example
 - The service layer for expenses supports receiving the model/entity via dep injection which makes future testing
   simpler.
+- Please see my "Todo" comments in the project 

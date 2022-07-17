@@ -9,19 +9,20 @@ interface Filters {
 }
 
 // Todo: create a dto for the filters so that we can validate them
-// regex match for datetime
+// -regex match for datetime to iso format
+// -perhaps run a sql sanitation uitl on each filter
 
 class GetUserExpensesRequestDTO {
     @IsUUID()
-    public userId: string
+    public readonly userId: string
     @IsOptional()
     @IsInt()
-    public limit?: number
+    public readonly limit?: number
     @IsOptional()
     @IsInt()
-    offset?: number
+    public readonly offset?: number
     @IsOptional()
-    filters: Filters
+    public readonly filters: Filters
 
     constructor(userId: string, limit: number = 50, offset: number = 0, filters?: Filters) {
       this.userId = userId;
