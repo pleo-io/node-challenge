@@ -6,12 +6,20 @@ import ExpenseService from '../service/expenseService';
 
 export const router = Router();
 
+type QueryArgs = { limit?: string, offset?: string, merchant_name?: string, date_from?: string, date_to?: string }
+type RequestParams = { userID: string }
+
 router.get('/get-user-expenses/:userID',
-  async (req: Request<{ userID: string }, any, any, { limit?: string, offset?: string }>,
+  async (req: Request<RequestParams, any, any, QueryArgs>,
     res) => {
     const dto = new GetUserExpensesRequestDTO(req.params.userID,
       req.query.limit && parseInt(req.query.limit),
-      req.query.offset && parseInt(req.query.offset));
+      req.query.offset && parseInt(req.query.offset),
+      {
+        merchant_name: req.query.merchant_name,
+        date_from: req.query.date_from,
+        date_to: req.query.date_to,
+      });
     const validationErrors = await dto.validate();
     if (validationErrors) {
       res.status(statusCode.BAD_REQUEST)

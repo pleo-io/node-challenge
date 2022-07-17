@@ -70,7 +70,8 @@ Happy hacking 😁!
 # Change Log
 
 - Added docker-compose for easy development setup.
-- Added sequelize (it was sequelise vs typeorm vs prisma) -> picked sequelise because it supports multiple db's so read
+- Added sequelize (it was sequelize vs typeorm vs prisma) -> I picked sequelize because it supports multiple db's so
+  read
   replicas can be used for data fetching + it is also backwards compatible with raw sql queries.
 - Added class-validator - For creating dto's and validating dto's (joi alternative)
 - Introduced variation of hexagonal architecture pattern of controller -> dto -> service -> model <- service -> dto ->
@@ -81,3 +82,18 @@ Happy hacking 😁!
       , and we validate the data before sending it to the next layer
     * We define a "validate" method on the dto class
     * Inspiration was taken from django's serializers and nestjs validation pipelines
+
+## How to test:
+
+1. Run ```docker-compose up --build```
+2. Request the expenses for a userId
+
+```bash
+curl --location --request GET 'http://localhost:9001/expense/v1/get-user-expenses/da140a29-ae80-4f0e-a62d-6c2d2bc8a474?limit=1'
+```
+
+## Notes:
+
+- I added a single unit test example for one of the DTO objects as a unit-test example
+- The service layer for expenses supports receiving the model/entity via dep injection which makes future testing
+  simpler.
