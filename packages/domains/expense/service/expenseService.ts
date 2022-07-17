@@ -42,6 +42,9 @@ class ExpenseService {
               case 'merchant_name':
                 // Todo: We should probably sanitise the where expression for strings
                 return filters.merchant_name ? { ...total, ...{ merchant_name: { [Op.iLike]: `%${filters.merchant_name}%` } } } : { ...total };
+              case 'status':
+                // Todo: We should probably sanitise the where expression for strings
+                return filters.status ? { ...total, ...{ status: { [Op.eq]: filters.status } } } : { ...total };
               default:
                 return { ...total };
             }

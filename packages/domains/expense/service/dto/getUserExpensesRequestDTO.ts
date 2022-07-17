@@ -5,6 +5,7 @@ interface Filters {
     merchant_name?: string
     date_from?: string
     date_to?: string
+    status?: string
 }
 
 // Todo: create a dto for the filters so that we can validate them

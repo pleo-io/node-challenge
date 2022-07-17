@@ -6,7 +6,14 @@ import ExpenseService from '../service/expenseService';
 
 export const router = Router();
 
-type QueryArgs = { limit?: string, offset?: string, merchant_name?: string, date_from?: string, date_to?: string }
+type QueryArgs = {
+    limit?: string
+    offset?: string
+    merchant_name?: string
+    date_from?: string
+    date_to?: string
+    status?: string
+}
 type RequestParams = { userID: string }
 
 router.get('/get-user-expenses/:userID',
@@ -19,6 +26,7 @@ router.get('/get-user-expenses/:userID',
         merchant_name: req.query.merchant_name,
         date_from: req.query.date_from,
         date_to: req.query.date_to,
+        status: req.query.status,
       });
     const validationErrors = await dto.validate();
     if (validationErrors) {
