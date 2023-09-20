@@ -1,13 +1,3 @@
-> :warning: This repository was archived automatically since no ownership was defined :warning:
->
-> For details on how to claim stewardship of this repository see:
->
-> [How to configure a service in OpsLevel](https://www.notion.so/pleo/How-to-configure-a-service-in-OpsLevel-f6483fcb4fdd4dcc9fc32b7dfe14c262)
->
-> To learn more about the automatic process for stewardship which archived this repository see:
->
-> [Automatic process for stewardship](https://www.notion.so/pleo/Automatic-process-for-stewardship-43d9def9bc9a4010aba27144ef31e0f2)
-
 # Node Challenge
 
 Take home test for Node.js developers.
@@ -34,7 +24,7 @@ Make sure that you have a modern version of `yarn` that supports workspaces (`>=
 yarn
 ```
 
-Start a Postgres Docker container, or alternatively run postgres outside docker. 
+Start a Postgres Docker container, or alternatively run Postgres outside docker. 
 
 ```bash
 docker run --name pleo-postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
