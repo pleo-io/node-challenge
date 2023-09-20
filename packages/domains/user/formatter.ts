@@ -7,7 +7,7 @@ export function capitalize(word) {
   return str[0].toUpperCase() + str.slice(1);
 }
 
-export function secureTrim(user: User): string {
+export function secureTrim(user: Partial<User>): string {
   return JSON.stringify(user, publicFields);
 }
 

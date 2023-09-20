@@ -1,4 +1,5 @@
-require('dotenv').config();
+require('dotenv')
+  .config();
 const path = require('path');
 
 module.exports = {
@@ -21,5 +22,8 @@ module.exports = {
   shutdown: {
     appKill: 1000,
     serverClose: 100,
+  },
+  auth: {
+    jwtSecret: process.env.JWT_SECRET || 'fake-secret',
   },
 };
