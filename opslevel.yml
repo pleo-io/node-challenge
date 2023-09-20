@@ -1,9 +1,10 @@
 version: 1
 service:
-  name: node challenge
+  name: Node challenge
   description: Node challenge
   owner: smb-architecture
   language: TypeScript
+  lifecycle: beta
   aliases:
     - node-challenge
   tags:
