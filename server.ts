@@ -11,7 +11,7 @@ import { createServer as createHTTPSServer, Server as SecureServer } from 'https
 
 const logger = Logger('server');
 const app = express();
-const server: Server | SecureServer = (config.https.enabled === true) ? createHTTPSServer(config.https, app as any) : createHTTPServer(app as any);
+const server: (Server | SecureServer) & {ready?: boolean} = (config.https.enabled === true) ? createHTTPSServer(config.https, app as any) : createHTTPServer(app as any);
 server.ready = false;
 
 gracefulShutdown(server);
@@ -31,7 +31,11 @@ app.use(security);
 
 app.use('/user', userRoutes);
 
-app.use(function(err, req, res) {
+app.use(function(err, req, res, next) {
+  if (res.headersSent) {
+    return next(err);
+  }
+
   res.status(500).json(err);
 });
 

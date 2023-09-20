@@ -72,8 +72,8 @@ f3f34c29-274a-414d-988f-711802eeac25	BRUS	5000	DKK	3d16547a-79f6-4f62-9034-d3bfb
 
 COPY public.users (id, first_name, last_name, company_name, ssn) FROM stdin;
 da140a29-ae80-4f0e-a62d-6c2d2bc8a474	jeppe	rindom	pleo	1
-e17825a6-ad80-41bb-a76b-c5ee17b2f29d	petr	janda	pleo	2
-3d16547a-79f6-4f62-9034-d3bfb31fb37c	olov	eriksson	pleo	3
+e17825a6-ad80-41bb-a76b-c5ee17b2f29d	nicco	perra	pleo	2
+3d16547a-79f6-4f62-9034-d3bfb31fb37c	jane	doe	pleo	3
 \.
 
 

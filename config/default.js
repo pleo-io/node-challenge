@@ -5,7 +5,7 @@ module.exports = {
   db: {
     host: '0.0.0.0',
     port: 5432,
-    database: 'challenge',
+    database: 'pleo_node_challenge',
   },
   debug: {
     stackSize: 4,

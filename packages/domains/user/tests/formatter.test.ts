@@ -1,4 +1,4 @@
-import { capitalize, format, secureTrim } from '../formatter';
+import { capitalize, format, redactSensitiveFields } from '../formatter';
 
 describe('[Packages | User-domain | Formatter] capitalize', () => {
   test('capitalize should make the first character as a capital letter', () => {
@@ -18,18 +18,19 @@ describe('[Packages | User-domain | Formatter] capitalize', () => {
   });
 });
 
-describe('[Packages | User-domain | Formatter] secureTrim', () => {
-  test('secureTrim should remove fields that are not defined in the list of public fields', () => {
-    return expect(secureTrim({
+describe('[Packages | User-domain | Formatter] redactSensitiveFields', () => {
+  test('redactSensitiveFields should remove fields that are not defined in the list of public fields', () => {
+    return expect(redactSensitiveFields({
+      id: '18d60d19-e747-4365-92e8-d8951eb47904',
       first_name: 'John',
       last_name: 'Smith',
       company_name: 'Pleo',
-      ssn: 1,
-    })).toEqual(JSON.stringify({
+      ssn: '1230',
+    })).toEqual({
       first_name: 'John',
       last_name: 'Smith',
       company_name: 'Pleo',
-    }));
+    });
   });
 });
 
