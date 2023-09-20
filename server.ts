@@ -1,5 +1,6 @@
 import config from 'config';
 import context from './middleware/context';
+import { router as expenseRoutes } from '@nc/domain-expense';
 import express from 'express';
 import gracefulShutdown from '@nc/utils/graceful-shutdown';
 import helmet from 'helmet';
@@ -29,10 +30,11 @@ app.get('/healthcheck', function healthcheckEndpoint(req, res) {
 app.use(context);
 app.use(security);
 
-app.use('/user', userRoutes);
+app.use('/user-managements', userRoutes);
+app.use('/expense-managements', expenseRoutes);
 
-app.use(function(err, req, res) {
-  res.status(500).json(err);
+app.use((err, _, res, next) => {
+  return res.headersSent ? next(err) : res.status(err.status || 500).json(err);
 });
 
 server.listen(config.port, () => {

@@ -21,15 +21,32 @@ describe('[Packages | User-domain | Formatter] capitalize', () => {
 describe('[Packages | User-domain | Formatter] secureTrim', () => {
   test('secureTrim should remove fields that are not defined in the list of public fields', () => {
     return expect(secureTrim({
+      id: '1234',
       first_name: 'John',
       last_name: 'Smith',
       company_name: 'Pleo',
-      ssn: 1,
+      ssn: '1',
     })).toEqual(JSON.stringify({
       first_name: 'John',
       last_name: 'Smith',
       company_name: 'Pleo',
     }));
+  });
+});
+
+describe('[Packages | User-domain | Formatter] secureTrimJSON', () => {
+  test('secureTrim should remove fields that are not defined in the list of public fields and return JSON', () => {
+    return expect(secureTrim({
+      id: '123',
+      first_name: 'John',
+      last_name: 'Smith',
+      company_name: 'Pleo',
+      ssn: '1',
+    })).toEqual({
+      first_name: 'John',
+      last_name: 'Smith',
+      company_name: 'Pleo',
+    });
   });
 });
 

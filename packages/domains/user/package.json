@@ -4,7 +4,8 @@
   "description": "User domain logic",
   "private": true,
   "dependencies": {
-      "@nc/utils": "^0.0.0",
-      "express": "^4.17.0"
+    "@nc/utils": "^0.0.0",
+    "express": "^4.17.0",
+    "joi": "^17.6.0"
   }
 }
