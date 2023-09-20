@@ -7,8 +7,8 @@ export function capitalize(word) {
   return str[0].toUpperCase() + str.slice(1);
 }
 
-export function secureTrim(user: User): string {
-  return JSON.stringify(user, publicFields);
+export function redactSensitiveFields(user: User): Pick<User, 'first_name' | 'last_name' | 'company_name'> {
+  return JSON.parse(JSON.stringify(user, publicFields));
 }
 
 export function format(rawUser): User {

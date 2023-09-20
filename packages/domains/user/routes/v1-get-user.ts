@@ -1,7 +1,7 @@
 import { ApiError } from '@nc/utils/errors';
 import { getUserDetails } from '../model';
+import { redactSensitiveFields } from '../formatter';
 import { Router } from 'express';
-import { secureTrim } from '../formatter';
 import { to } from '@nc/utils/async';
 
 export const router = Router();
@@ -17,5 +17,5 @@ router.get('/get-user-details', async (req, res, next) => {
     return res.json({});
   }
 
-  return res.json(secureTrim(userDetails));
+  return res.json(redactSensitiveFields(userDetails));
 });

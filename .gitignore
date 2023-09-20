@@ -67,4 +67,7 @@ package-lock.json
 # MacOS
 .DS_Store
 
+# Environment variables
+.env
+
 bin
