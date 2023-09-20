@@ -1,0 +1,16 @@
+version: 1
+service:
+  name: Node challenge
+  description: Node challenge
+  owner: smb-architecture
+  language: TypeScript
+  lifecycle: beta
+  aliases:
+    - node-challenge
+  tags:
+    - key: type
+      value: hiring-challenge
+  repositories:
+    - name: pleo-io/node-challenge
+      path: "/"
+      provider: github
