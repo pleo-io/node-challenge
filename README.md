@@ -84,3 +84,27 @@ The command above will run the following test suites sequentially:
 
 
 Happy hacking 😁!
+
+##First Task
+
+The first thing i did is downloading all the required modules and softwares needed for the challange. I used Node.js, Express.js,Jest.js,Supertest,body-parser,Posgres and dotenv files.
+
+##Second Task
+
+Then i created a database in my posgres called "challenge" and import dump.sql file to that database. And in my node application i created a local server and connect it to port 8080 and also connect my node application to database.
+##Third Task
+
+I used REST api to access the data in the database. So i use GET method to fetch the all the data. One thing i added here even though the challenge only ask to fetch the data, i used all the CRUD application so that the application allow to add,update,delete expenses from the database.Not only that i added a method that will allow to get a specific data using its ID. I used express,body-parser and dotenv in the application.
+
+##Forth Task
+
+After that i wrote a code that will filter expenses based on "amount_in_cents" and "status". I gave a specific query to select data that are greater than 6000 and status pending to test it. Also added a sorting function to sort by "amount_in_cents". Also a pagination function will put data in pages.
+
+##Final Task
+
+The final task is to test the application. I used a "Jest.js" and "supertest" for testing the project.
+
+##Additional
+
+Additional thing is that i also done the same application using Node.js and MongoDB. so request me if you are interested to see it.
+
